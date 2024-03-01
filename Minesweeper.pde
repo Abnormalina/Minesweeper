@@ -1,6 +1,6 @@
 private MSButton[][] buttons;
 private ArrayList <MSButton> explosives;
-private int rows = 20;
+private int NUM_ROWS = 20;
 private int NUM_COLS = 20;
 private boolean isLost = false;
 private int tileCount = 0;
@@ -9,10 +9,10 @@ void setup ()
 {
     textAlign(CENTER,CENTER);
     size(500, 500);
-    buttons = new MSButton[rows][NUM_COLS];
+    buttons = new MSButton[NUM_ROWS][NUM_COLS];
     explosives = new ArrayList <MSButton>();
     for(int j = 0;j<NUM_COLS;j++){
-        for(int i = 0; i < rows;i++){
+        for(int i = 0; i < NUM_ROWS;i++){
             buttons[i][j]= new MSButton(i,j);
     }
 } 
@@ -35,7 +35,7 @@ public void draw (){
     if(isWon()==true){
         WinningMessage();
     }
-    for (int i = 0; i < rows; i++) {
+    for (int i = 0; i < NUM_ROWS; i++) {
      for (int j = 0; j < NUM_COLS; j++) {
         buttons[i][j].draw();
       } 
@@ -44,7 +44,7 @@ public void draw (){
 
 public boolean isWon()
 {
-     int nonExplosiveTiles = rows * NUM_COLS - explosives.size();
+     int nonExplosiveTiles = NUM_ROWS * NUM_COLS - explosives.size();
      
     if( tileCount == nonExplosiveTiles){
       return true;
@@ -61,28 +61,28 @@ public void LosingMessage()
         }
     }
     isLost = true;
-    buttons[rows/2][(NUM_COLS/2)-4].setLabel("Y");
-    buttons[rows/2][(NUM_COLS/2)-3].setLabel("O");
-    buttons[rows/2][(NUM_COLS/2-2)].setLabel("U");
-    buttons[rows/2][(NUM_COLS/2-1)].setLabel("");
-    buttons[rows/2][(NUM_COLS/2)].setLabel("L");
-    buttons[rows/2][(NUM_COLS/2+1)].setLabel("O");
-    buttons[rows/2][(NUM_COLS/2+2)].setLabel("S");
-    buttons[rows/2][(NUM_COLS/2+3)].setLabel("E");
+    buttons[NUM_ROWS/2][(NUM_COLS/2)-4].setLabel("Y");
+    buttons[NUM_ROWS/2][(NUM_COLS/2)-3].setLabel("O");
+    buttons[NUM_ROWS/2][(NUM_COLS/2-2)].setLabel("U");
+    buttons[NUM_ROWS/2][(NUM_COLS/2-1)].setLabel("");
+    buttons[NUM_ROWS/2][(NUM_COLS/2)].setLabel("L");
+    buttons[NUM_ROWS/2][(NUM_COLS/2+1)].setLabel("O");
+    buttons[NUM_ROWS/2][(NUM_COLS/2+2)].setLabel("S");
+    buttons[NUM_ROWS/2][(NUM_COLS/2+3)].setLabel("E");
 }
 
 public void WinningMessage()
 {
     isLost = true;
     System.out.println("We win these?");
-    buttons[rows/2][(NUM_COLS/2)-4].setLabel("Y");
-    buttons[rows/2][(NUM_COLS/2)-3].setLabel("O");
-    buttons[rows/2][(NUM_COLS/2-2)].setLabel("U");
-    buttons[rows/2][(NUM_COLS/2-1)].setLabel("");
-    buttons[rows/2][(NUM_COLS/2)].setLabel("W");
-    buttons[rows/2][(NUM_COLS/2+1)].setLabel("I");
-    buttons[rows/2][(NUM_COLS/2+2)].setLabel("N");
-    buttons[rows/2][(NUM_COLS/2+3)].setLabel("!");
+    buttons[NUM_ROWS/2][(NUM_COLS/2)-4].setLabel("Y");
+    buttons[NUM_ROWS/2][(NUM_COLS/2)-3].setLabel("O");
+    buttons[NUM_ROWS/2][(NUM_COLS/2-2)].setLabel("U");
+    buttons[NUM_ROWS/2][(NUM_COLS/2-1)].setLabel("");
+    buttons[NUM_ROWS/2][(NUM_COLS/2)].setLabel("W");
+    buttons[NUM_ROWS/2][(NUM_COLS/2+1)].setLabel("I");
+    buttons[NUM_ROWS/2][(NUM_COLS/2+2)].setLabel("N");
+    buttons[NUM_ROWS/2][(NUM_COLS/2+3)].setLabel("!");
 }
 
 public void mousePressed (){
@@ -99,7 +99,7 @@ public class MSButton
     private String label;   
     public MSButton (int rr, int cc){
         width = 500/NUM_COLS;
-        height = 500/rows;
+        height = 500/NUM_ROWS;
         r = rr;
         c = cc; 
         x = c*width;
@@ -190,7 +190,7 @@ public void setLabel(String newLabel){
 }
 
 public boolean isValid(int r, int c){
-        if (r <rows && r >= 0 && c < NUM_COLS && c >= 0) {
+        if (r <NUM_ROWS && r >= 0 && c < NUM_COLS && c >= 0) {
         return true;
       }
         return false;
