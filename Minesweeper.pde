@@ -20,7 +20,7 @@ void setup ()
 }
 
 public void setexplosives(){  
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 35; i++) {
     final int r1 = (int)(Math.random()*20);
     final int r2 = (int)(Math.random()*20);
     if ((explosives.contains (buttons[r1][r2])) == false) {
