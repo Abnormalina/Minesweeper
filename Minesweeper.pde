@@ -32,7 +32,7 @@ public void setexplosives(){
 
 public void draw (){
     background(0);
-    if(isWon()){
+    if(isWon()==true){
         WinningMessage();
     }
     for (int i = 0; i < rows; i++) {
@@ -44,7 +44,13 @@ public void draw (){
 
 public boolean isWon()
 {
-  return false;
+     int nonExplosiveTiles = rows * NUM_COLS - explosives.size();
+     
+    if( tileCount == nonExplosiveTiles){
+      return true;
+}
+else{
+  return false;}
 }
 
 public void LosingMessage()
@@ -68,6 +74,7 @@ public void LosingMessage()
 public void WinningMessage()
 {
     isLost = true;
+    System.out.println("We win these?");
     buttons[rows/2][(NUM_COLS/2)-4].setLabel("Y");
     buttons[rows/2][(NUM_COLS/2)-3].setLabel("O");
     buttons[rows/2][(NUM_COLS/2-2)].setLabel("U");
