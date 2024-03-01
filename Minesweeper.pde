@@ -20,7 +20,7 @@ void setup ()
 }
 
 public void setexplosives(){  
-  for (int i = 0; i < 35; i++) {
+  for (int i = 0; i < 3; i++) {
     final int r1 = (int)(Math.random()*20);
     final int r2 = (int)(Math.random()*20);
     if ((explosives.contains (buttons[r1][r2])) == false) {
@@ -74,7 +74,7 @@ public void LosingMessage()
 public void WinningMessage()
 {
     isLost = true;
-    System.out.println("We win these?");
+    
     buttons[NUM_ROWS/2][(NUM_COLS/2)-4].setLabel("Y");
     buttons[NUM_ROWS/2][(NUM_COLS/2)-3].setLabel("O");
     buttons[NUM_ROWS/2][(NUM_COLS/2-2)].setLabel("U");
